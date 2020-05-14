@@ -7,7 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 
 import App from '../src/App';
 
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 7777;
 const app = express();
 
 app.use(express.static('./build'));
@@ -15,7 +15,7 @@ app.use(express.static('./build'));
 app.get('/*', (req, res) => {
   const app = ReactDOMServer.renderToString(<App />);
 
-  const indexFile = path.resolve('../web/build/index.html');
+  const indexFile = path.resolve('./build/index.html');
   fs.readFile(indexFile, 'utf8', (err, data) => {
     if (err) {
       console.error('Something went wrong:', err);
