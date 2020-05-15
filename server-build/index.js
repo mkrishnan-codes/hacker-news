@@ -90,10 +90,90 @@
 /*!*************************!*\
   !*** ./server/index.js ***!
   \*************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _src_App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/App */ \"./src/App.js\");\nvar _jsxFileName = \"/Users/manu/Documents/live-proj/hacker-earth/hacker-news/server/index.js\";\n\n\n\n\n\n\nconst PORT = process.env.PORT || 7777;\nconst app = express__WEBPACK_IMPORTED_MODULE_3___default()();\napp.use(express__WEBPACK_IMPORTED_MODULE_3___default.a.static('./build'));\napp.get('/*', (req, res) => {\n  const app = react_dom_server__WEBPACK_IMPORTED_MODULE_4___default.a.renderToString( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_src_App__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    __self: undefined,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 16,\n      columnNumber: 45\n    }\n  }));\n  const indexFile = path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./build/index.html');\n  fs__WEBPACK_IMPORTED_MODULE_1___default.a.readFile(indexFile, 'utf8', (err, data) => {\n    if (err) {\n      console.error('Something went wrong:', err);\n      return res.status(500).send('Oops, better luck next time!');\n    }\n\n    return res.send(data.replace('<div id=\"root\"></div>', `<div id=\"root\">${app}</div>`));\n  });\n});\napp.listen(PORT, () => {\n  console.log(`👍 Server is listening on port ${PORT}`);\n});\n\n//# sourceURL=webpack:///./server/index.js?");
+
+/***/ }),
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Components_Pages_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/Pages/Home */ \"./src/Components/Pages/Home.js\");\nvar _jsxFileName = \"/Users/manu/Documents/live-proj/hacker-earth/hacker-news/src/App.js\";\n // import './App.css';\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Pages_Home__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    name: \"World\",\n    __self: this,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 7,\n      columnNumber: 4\n    }\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (App);\n\n//# sourceURL=webpack:///./src/App.js?");
+
+/***/ }),
+
+/***/ "./src/Components/Pages/Home.js":
+/*!**************************************!*\
+  !*** ./src/Components/Pages/Home.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\nvar _jsxFileName = \"/Users/manu/Documents/live-proj/hacker-earth/hacker-news/src/Components/Pages/Home.js\";\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (props => {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", {\n    __self: undefined,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 4,\n      columnNumber: 10\n    }\n  }, \"Hello \", props.name, \"!\");\n});\n\n//# sourceURL=webpack:///./src/Components/Pages/Home.js?");
+
+/***/ }),
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nTypeError: /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/server/index.js: Cannot read property 'bindings' of null\\n    at Scope.moveBindingTo (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/scope/index.js:926:13)\\n    at BlockScoping.updateScopeInfo (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/babel-plugin-transform-es2015-block-scoping/lib/index.js:364:17)\\n    at BlockScoping.run (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/babel-plugin-transform-es2015-block-scoping/lib/index.js:330:12)\\n    at PluginPass.BlockStatementSwitchStatementProgram (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/babel-plugin-transform-es2015-block-scoping/lib/index.js:70:24)\\n    at newFn (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/visitors.js:179:21)\\n    at NodePath._call (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/path/context.js:55:20)\\n    at NodePath.call (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/path/context.js:42:17)\\n    at NodePath.visit (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/path/context.js:90:31)\\n    at TraversalContext.visitQueue (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/context.js:112:16)\\n    at TraversalContext.visitSingle (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/context.js:84:19)\\n    at TraversalContext.visit (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/context.js:140:19)\\n    at Function.traverse.node (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/index.js:84:17)\\n    at traverse (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/traverse/lib/index.js:66:12)\\n    at transformFile (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/core/lib/transformation/index.js:107:29)\\n    at transformFile.next (<anonymous>)\\n    at run (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/core/lib/transformation/index.js:35:12)\\n    at run.next (<anonymous>)\\n    at Function.transform (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/core/lib/transform.js:27:41)\\n    at transform.next (<anonymous>)\\n    at step (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:254:32)\\n    at /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:266:13\\n    at async.call.result.err.err (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:216:11)\\n    at /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:184:28\\n    at /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/@babel/core/lib/gensync-utils/async.js:72:7\\n    at /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:108:33\\n    at step (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:280:14)\\n    at /Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:266:13\\n    at async.call.result.err.err (/Users/manu/Documents/live-proj/hacker-earth/hacker-news/app/node_modules/gensync/index.js:216:11)\");\n\n//# sourceURL=webpack:///./server/index.js?");
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"fs\");\n\n//# sourceURL=webpack:///external_%22fs%22?");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%22path%22?");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
 
 /***/ })
 
