@@ -1,15 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NewsItem } from './NewsItem';
 import { Grid, Button, useMediaQuery, useTheme, Typography } from '@material-ui/core';
 import { updatePage } from '../../redux/reducer';
+import { restoreLikes } from '../../redux/reducer';
 
 
 export const News = () => {
-	const { data, page, pages } = useSelector((state) => state);
+	const { data, page, pages, likesMap } = useSelector((state) => state);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		if (localStorage.getItem('likesMap')) {
+			dispatch(
+				restoreLikes(JSON.parse(localStorage.getItem('likesMap')))
+			)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('md'));
-	const dispatch = useDispatch();
 	return (
 		<Fragment>
 			<Grid container spacing={3} >
@@ -40,6 +49,7 @@ export const News = () => {
 			<Grid container spacing={1} >
 				{
 					data && data.map((news) => <NewsItem
+						likeCount={likesMap[news.objectID] ? likesMap[news.objectID] : news.points}
 						key={news.objectID}
 						{...news} />)
 				}
@@ -50,8 +60,7 @@ export const News = () => {
 					<Button disabled={page === 0} onClick={() => dispatch(updatePage(page - 1))}>Previous</Button>
 				</Grid>
 				<Grid item>
-
-					<Button disabled={pages < page - 1} onClick={() => dispatch(updatePage(page + 1))}>Next</Button>
+					<Button disabled={pages - 2 < page} onClick={() => dispatch(updatePage(page + 1))}>Next</Button>
 				</Grid>
 			</Grid>
 		</Fragment>

@@ -116,7 +116,7 @@ export default function MainPage(props) {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Hacker News
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

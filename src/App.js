@@ -4,11 +4,15 @@ import Home from './Components/Pages/Home';
 
 import { Provider } from 'react-redux';
 import { store } from '../src/redux/store';
+import { MuiThemeProvider } from '@material-ui/core';
+import theme from './theme';
 function App() {
   return (
-    <Provider store={store}>
-      <Home name="React World"/>
-    </Provider>
+    <MuiThemeProvider theme={theme}>
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    </MuiThemeProvider>
   );
 }
 

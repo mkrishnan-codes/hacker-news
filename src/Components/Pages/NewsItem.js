@@ -4,7 +4,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
+import { Grid, IconButton } from '@material-ui/core';
+import { ThumbUp, ThumbUpOutlined } from '@material-ui/icons';
+import { useDispatch } from 'react-redux';
+import { like } from '../../redux/reducer';
 const useStyles = makeStyles({
     root: {
     },
@@ -23,6 +26,7 @@ const useStyles = makeStyles({
 
 export const NewsItem = (props) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return (
         <Grid item xs={12}>
@@ -37,21 +41,21 @@ export const NewsItem = (props) => {
 
                         <Grid item xs={4} lg={1} md={1}>
                             <Typography variant="body2" component="p">
-                                {props.points}
+                                {props.likeCount}
                             </Typography>
                         </Grid>
 
                         <Grid item xs={4} lg={1} md={1}>
-                            <Typography variant="body2" component="p">
-                                {props.num_comments}
-                            </Typography>
+                            <IconButton onClick={() => dispatch(like(props.objectID))} color="primary" aria-label="upvote" component="span">
+                                <ThumbUpOutlined fontSize="small" />
+                            </IconButton>
                         </Grid>
 
 
 
                         <Grid item xs={12} lg={9} md={9}>
                             <Typography variant="body2" component="p">
-                                Year {props.title}
+                                {props.title}
                             </Typography>
                         </Grid>
 
