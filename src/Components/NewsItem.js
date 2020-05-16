@@ -34,7 +34,7 @@ export const NewsItem = (props) => {
             <Paper className={classes.root}>
                 <Grid container spacing={3} alignItems="center">
                     <Grid item xs={4} lg={1} md={1}>
-                        <Typography variant="body2" component="p">
+                        <Typography className="num-elem" variant="body2" component="p">
                             {props.num_comments}
                         </Typography>
                     </Grid>
@@ -54,7 +54,7 @@ export const NewsItem = (props) => {
 
 
                     <Grid item xs={12} lg={8} md={8}>
-                        <Typography variant="body2" component="p">
+                        <Typography className="title-elem" variant="body2" component="p">
                             {props.title}
                         </Typography>
                     </Grid>
