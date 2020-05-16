@@ -8,46 +8,29 @@ import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 
 import App from '../src/App';
 import theme from './theme';
+import { renderPage } from './wrapHtml';
 
 const PORT = process.env.PORT || 7777;
 const app = express();
 
-const renderFullPage = (html, css) => {
-  return `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>My page</title>
-        <meta
-          name="viewport"
-           content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-        <style id="jss-server-side">${css}</style>
-      </head>
-      <body>
-        <div id="root">${html}</div>
-      </body>
-    </html>
-  `;
-}
-const render = (req, res) => {
+const renderHandler = (req, res) => {
   const sheets = new ServerStyleSheets();
-
+  // const preloadedState = store.getState()
   const html = ReactDOMServer.renderToString(
     sheets.collect(
       <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>,
+          <App />
+      </ThemeProvider>
     ),
   );
 
   const css = sheets.toString();
 
-  res.send(renderFullPage(html, css));
+  res.send(renderPage(html, css));
 }
 
 app.use(express.static('./build'));
-app.use(render);
+app.use(renderHandler);
 
 app.listen(PORT, () => {
   console.log(`👍 Server is listening on port ${PORT}`);
