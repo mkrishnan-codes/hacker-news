@@ -2,8 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NewsItem } from './NewsItem';
 import { Grid, Button, useMediaQuery, useTheme, Typography } from '@material-ui/core';
-import { updatePage } from '../../redux/reducer';
-import { restoreLikes } from '../../redux/reducer';
+import { updatePage } from '../redux/reducer';
+import { restoreLikes } from '../redux/reducer';
 import Chart from 'react-google-charts';
 
 

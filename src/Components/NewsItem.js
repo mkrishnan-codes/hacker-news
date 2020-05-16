@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Grid, IconButton } from '@material-ui/core';
 import { ThumbUp, ThumbUpOutlined } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { like } from '../../redux/reducer';
+import { like } from '../redux/reducer';
 const useStyles = makeStyles({
     root: {
     },
