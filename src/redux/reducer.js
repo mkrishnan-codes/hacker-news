@@ -27,11 +27,15 @@ const postsSlice = createSlice({
         },
         restoreLikes(state, action) {
             state.likesMap = action.payload ? action.payload : {}
+        },
+        hide(state, action) {
+            const ind = state.data.findIndex((item) => item.objectID === action.payload);
+            state.data[ind].hidden = true;
         }
 
     }
 })
 
 const { actions, reducer } = postsSlice
-export const { fillNews, updatePage, like, restoreLikes } = actions
+export const { fillNews, updatePage, like, restoreLikes, hide } = actions
 export default reducer

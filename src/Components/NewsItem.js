@@ -1,15 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import { Grid, IconButton } from '@material-ui/core';
-import { ThumbUpOutlined } from '@material-ui/icons';
+import { Grid, IconButton, Paper } from '@material-ui/core';
+import { ThumbUpOutlined, VisibilityOff } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { like } from '../redux/reducer';
+import { like, hide } from '../redux/reducer';
 const useStyles = makeStyles({
     root: {
+        paddingLeft: 10,
+        paddingTop: 10,
+        paddingRight: 10,
     },
     bullet: {
         display: 'inline-block',
@@ -28,41 +29,43 @@ export const NewsItem = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    return (
+    return !props.hidden && (
         <Grid item xs={12}>
-            <Card className={classes.root}>
-                <CardContent>
-                    <Grid container spacing={3}>
-                        <Grid item xs={4} lg={1} md={1}>
-                            <Typography variant="body2" component="p">
-                                {props.num_comments}
-                            </Typography>
-                        </Grid>
-
-                        <Grid item xs={4} lg={1} md={1}>
-                            <Typography variant="body2" component="p">
-                                {props.likeCount}
-                            </Typography>
-                        </Grid>
-
-                        <Grid item xs={4} lg={1} md={1}>
-                            <IconButton onClick={() => dispatch(like(props.objectID))} color="primary" aria-label="upvote" component="span">
-                                <ThumbUpOutlined fontSize="small" />
-                            </IconButton>
-                        </Grid>
-
-
-
-                        <Grid item xs={12} lg={9} md={9}>
-                            <Typography variant="body2" component="p">
-                                {props.title}
-                            </Typography>
-                        </Grid>
-
-
+            <Paper className={classes.root}>
+                <Grid container spacing={3} alignItems="center">
+                    <Grid item xs={4} lg={1} md={1}>
+                        <Typography variant="body2" component="p">
+                            {props.num_comments}
+                        </Typography>
                     </Grid>
-                </CardContent>
-            </Card>
+
+                    <Grid item xs={4} lg={1} md={1}>
+                        <Typography variant="body2" component="p">
+                            {props.likeCount}
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={4} lg={1} md={1}>
+                        <IconButton onClick={() => dispatch(like(props.objectID))} color="primary" aria-label="upvote" component="span">
+                            <ThumbUpOutlined fontSize="small" />
+                        </IconButton>
+                    </Grid>
+
+
+
+                    <Grid item xs={12} lg={8} md={8}>
+                        <Typography variant="body2" component="p">
+                            {props.title}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} lg={1} md={1}>
+                        <IconButton onClick={() => dispatch(hide(props.objectID))} color="primary" aria-label="upvote" component="span">
+                            <VisibilityOff fontSize="small" />
+                        </IconButton>
+                    </Grid>
+
+                </Grid>
+            </Paper>
         </Grid>
     );
 }

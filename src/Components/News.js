@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NewsItem } from './NewsItem';
-import { Grid, Button, useMediaQuery, useTheme, Typography } from '@material-ui/core';
+import { Grid, Button, useMediaQuery, useTheme, Typography} from '@material-ui/core';
 import { updatePage } from '../redux/reducer';
 import { restoreLikes } from '../redux/reducer';
 import { ChartWrapper } from './ChartWrapper';
@@ -54,14 +54,13 @@ export const News = () => {
 						key={news.objectID}
 						{...news} />)
 				}
-			</Grid>
-
-			<Grid container justify="flex-end">
-				<Grid item>
-					<Button disabled={page === 0} onClick={() => dispatch(updatePage(page - 1))}>Previous</Button>
-				</Grid>
-				<Grid item>
-					<Button disabled={pages - 2 < page} onClick={() => dispatch(updatePage(page + 1))}>Next</Button>
+				<Grid style={{ padding: 10 }} container justify="flex-end">
+					<Grid item>
+						<Button disabled={page === 0} onClick={() => dispatch(updatePage(page - 1))}>Previous</Button>
+					</Grid>
+					<Grid item>
+						<Button disabled={pages - 2 < page} onClick={() => dispatch(updatePage(page + 1))}>Next</Button>
+					</Grid>
 				</Grid>
 			</Grid>
 			<ChartWrapper data={data} likesMap={likesMap} />
