@@ -1,1 +1,1 @@
-web: yarn test && node ./server-build/index.js
+web: node ./server-build/index.js
