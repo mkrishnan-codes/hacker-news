@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-google-charts';
 import { Paper } from '@material-ui/core';
-export const ChartWrapper = (props) => {
+const ChartWrapper = (props) => {
 	const getPoints = (id, value) => {
 		if (props.likesMap[id]) {
 			return props.likesMap[id];
@@ -31,3 +31,4 @@ export const ChartWrapper = (props) => {
 		/>
 	</Paper>
 }
+export default ChartWrapper;

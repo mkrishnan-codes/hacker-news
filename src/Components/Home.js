@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import { GET as GETDATA } from '../services/api';
 import { fillNews } from '../redux/reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { News } from './News';
-import { Container, Box, CssBaseline } from '@material-ui/core';
+
+import { Container, Box, CssBaseline, CircularProgress } from '@material-ui/core';
+const News = React.lazy(() => import('./News'));
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -122,7 +123,10 @@ export default function MainPage(props) {
       <Container>
         <Box my={2}>
           {
-            props.load && <News />
+            props.load &&
+            <Suspense fallback={<CircularProgress />}>
+              <News />
+            </Suspense>
           }
         </Box>
 

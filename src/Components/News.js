@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NewsItem } from './NewsItem';
-import { Grid, Button, useMediaQuery, useTheme, Typography} from '@material-ui/core';
+import { Grid, Button, useMediaQuery, useTheme, Typography, CircularProgress } from '@material-ui/core';
 import { updatePage } from '../redux/reducer';
 import { restoreLikes } from '../redux/reducer';
-import { ChartWrapper } from './ChartWrapper';
-
+const ChartWrapper = React.lazy(() => import('./ChartWrapper'));
 
 export const News = () => {
 	const { data, page, pages, likesMap } = useSelector((state) => state);
@@ -63,7 +62,11 @@ export const News = () => {
 					</Grid>
 				</Grid>
 			</Grid>
-			<ChartWrapper data={data} likesMap={likesMap} />
+			<Suspense fallback={<CircularProgress />}>
+				<ChartWrapper data={data} likesMap={likesMap} />
+			</Suspense>
+
 		</Fragment>
 	);
 }
+export default News;
