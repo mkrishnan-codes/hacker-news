@@ -2,9 +2,12 @@ Project is a hacker news clone - [https://news.ycombinator.com/](https://news.yc
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Used server side rendering in a node server.
 
-  
-
+ 
 App is deployed to heroku. [Live view here](https://hacker-news-gi.herokuapp.com/)
+
+
+*Note - When an app on Heroku has only one web dyno and that dyno doesn't receive any traffic in 1 hour, the dyno goes to sleep, as a result initial wakeup of app will be [little slow](https://blog.heroku.com/app_sleeping_on_heroku)*
+
 
 [View deployments](https://github.com/mkrishnan-codes/hacker-news/deployments)
 
@@ -47,3 +50,4 @@ It correctly bundles React in production mode and optimizes the build for the be
   
 
 The build is minified and the filenames include the hashes.<br  />
+
