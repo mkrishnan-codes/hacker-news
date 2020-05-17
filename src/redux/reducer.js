@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+export const initialState = {
+    data: [],
+    page: 0,
+    pages: Number.MAX_VALUE,
+    likesMap: {}
+};
 const postsSlice = createSlice({
     name: 'news',
-    initialState: {
-        data: [],
-        page: 0,
-        pages: Number.MAX_VALUE,
-        likesMap: {}
-    },
+    initialState,
     reducers: {
         fillNews(state, action) {
             state.data = action.payload.hits;
