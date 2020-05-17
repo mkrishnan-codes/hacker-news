@@ -16,7 +16,7 @@ app.use(compression())
 const renderHandler = (req, res) => {
   const sheets = new ServerStyleSheets();
   // const preloadedState = store.getState()
-  const html = ReactDOMServer.renderToString(
+  const html = ReactDOMServer.renderToNodeStream(
     sheets.collect(
       <ThemeProvider theme={theme}>
           <App />
