@@ -11,8 +11,7 @@ import { GET as GETDATA } from '../services/api';
 import { fillNews } from '../redux/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { News } from './News';
-import { Container, useScrollTrigger, Box, CssBaseline } from '@material-ui/core';
-import PropTypes from 'prop-types'
+import { Container, Box, CssBaseline } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,

@@ -25,7 +25,7 @@ const renderHandler = (req, res) => {
   );
 
   // const css = sheets.toString();
-
+  res.set('Cache-Control', 'public, max-age=31557600'); 
   res.send(renderPage(html, ''));
 }
 
