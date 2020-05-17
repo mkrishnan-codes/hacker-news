@@ -69,36 +69,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 }));
-function ElevationScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
 
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
-
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
 export default function MainPage(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { page } = useSelector((state) => state);
 
   useEffect(() => {
-    async function initDataCall() {
-      const data = await GETDATA({ tags: 'front_page', page });
-      if (data) {
-        dispatch(fillNews(data));
+    if (props.load) {
+      async function initDataCall() {
+        const data = await GETDATA({ tags: 'front_page', page });
+        if (data) {
+          dispatch(fillNews(data));
+        }
       }
+      initDataCall();
     }
-    initDataCall();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -136,7 +122,9 @@ export default function MainPage(props) {
       <Toolbar />
       <Container>
         <Box my={2}>
-          <News />
+          {
+            props.load && <News />
+          }
         </Box>
 
       </Container>

@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import './App.css';
 import Home from './Components/Home';
 
 import { Provider } from 'react-redux';
 import { store } from '../src/redux/store';
-import { MuiThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
-function App() {
+function App(props) {
+  useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <Home />
+        <Home {...props} />
       </Provider>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }
 

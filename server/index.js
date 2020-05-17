@@ -6,7 +6,7 @@ import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 
-import App from '../src/App';
+import Home from '../src/Components/Home';
 import theme from '../src/theme';
 import { renderPage } from './wrapHtml';
 import compression from 'compression';
@@ -19,19 +19,19 @@ const renderHandler = (req, res) => {
   const html = ReactDOMServer.renderToNodeStream(
     sheets.collect(
       <ThemeProvider theme={theme}>
-          <App />
+        <Home />
       </ThemeProvider>
     ),
   );
 
-  const css = sheets.toString();
+  // const css = sheets.toString();
 
-  res.send(renderPage(html, css));
+  res.send(renderPage(html, ''));
 }
 
 app.use(express.static('./build'));
 app.use(renderHandler);
 
 app.listen(PORT, () => {
-  console.log(`👍 Server is listening on port ${PORT}`);
+  console.log(`Server is listening on port ${PORT} 🚚`);
 });
