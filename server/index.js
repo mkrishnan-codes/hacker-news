@@ -7,12 +7,12 @@ import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 
 import App from '../src/App';
-import theme from './theme';
+import theme from '../src/theme';
 import { renderPage } from './wrapHtml';
-
+import compression from 'compression';
 const PORT = process.env.PORT || 7777;
 const app = express();
-
+app.use(compression())
 const renderHandler = (req, res) => {
   const sheets = new ServerStyleSheets();
   // const preloadedState = store.getState()
