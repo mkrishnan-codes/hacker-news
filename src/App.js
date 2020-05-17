@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import './App.css';
 import Home from './Components/Home';
 
 import { Provider } from 'react-redux';
