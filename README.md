@@ -13,13 +13,25 @@ App is deployed to heroku. [Live view here](https://hacker-news-gi.herokuapp.com
 
   **Tech stack**
  
- Nodejs
- Reactjs
- Redux
- [Redux toolkit](https://redux-toolkit.js.org/) - To reduce complexity in setting up store and reduce boilerplates
- Material UI
- Unit tests -  Jest
- CI - Heroku pipeline
+ 
+
+ - Nodejs
+
+ 
+
+ - Reactjs
+
+ 
+
+ - Redux
+
+ 
+
+ - [Redux toolkit](https://redux-toolkit.js.org/) - To reduce complexity
+   in setting up store and reduce boilerplates
+ - Material UI
+ - Unit tests -  Jest
+ - CI - Heroku pipeline
 
 ## Available Scripts
 
