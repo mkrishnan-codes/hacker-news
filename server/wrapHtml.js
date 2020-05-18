@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-const injectState = (preloadedState) => {
+function injectState(preloadedState) {
 	return `<script>
 	// WARNING: See the following for security issues around embedding JSON in HTML:
 	// https://redux.js.org/recipes/server-rendering/#security-considerations
@@ -12,13 +12,15 @@ const injectState = (preloadedState) => {
   </script>`;
 }
 
-export const renderPage = (html, css, preloadedState) => {
+export function renderPage(html, css, preloadedState) {
 	const indexFile = path.resolve('./build/index.html');
 	fs.readFile(indexFile, 'utf8', (err, data) => {
 		if (err) {
 			console.error('Something went wrong:', err);
 			return 'Oops, better luck next time!';
 		}
+		const ps = injectState(preloadedState);
+		console.log(ps, 'PS #####');
 
 		return data
 			.replace('<div id="root"></div>', `<div id="root">${html}</div>`)

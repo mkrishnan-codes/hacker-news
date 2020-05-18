@@ -21,9 +21,9 @@
   "scripts": {
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
     "dev:start": "nodemon ./server-build/index.js",
-    "dev": "yarn build && npm-run-all --parallel build dev:*",
+    "dev": "npm-run-all --parallel build dev:*",
     "rstart": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_ENV=production webpack --config webpack.server.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "node ./server/index.js"

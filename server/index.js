@@ -16,7 +16,8 @@ import { Provider } from 'react-redux';
 const PORT = process.env.PORT || 7777;
 const app = express();
 app.use(compression())
-const renderHandler = (req, res) => {
+function renderHandler(req, res) {
+  console.log('Request', req)
   const params = qs.parse(req.query)
   const page = parseInt(params.page, 10) || 0;
   let pre = { ...initialState, page }
@@ -36,7 +37,7 @@ const renderHandler = (req, res) => {
   console.log(preloadedState, 'preloadedState');
   const content = renderPage(html, '', preloadedState)
   // const css = sheets.toString();
-  res.set('Cache-Control', 'public, max-age=31557600');
+  // res.set('Cache-Control', 'public, max-age=31557600');
   console.log(content);
 
   res.send(content);
@@ -44,6 +45,7 @@ const renderHandler = (req, res) => {
 
 app.use(express.static('./build'));
 app.use(renderHandler);
+console.log(PORT, 'PORT');
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT} 🚚🚚🚚 ${new Date()}`);
